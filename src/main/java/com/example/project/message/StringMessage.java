@@ -1,13 +1,13 @@
 package com.example.project.message;
 
 public class StringMessage extends Message {
-    String payLoad;
+    String payload;
 
     public StringMessage(String payload) {
-        this.payLoad = payLoad;
+        this.payload = payload;
     }
 
     public String getPayload() {
-        return payLoad;
+        return payload;
     }
 }
