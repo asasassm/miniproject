@@ -3,13 +3,12 @@ package com.example.project.node;
 import java.util.UUID;
 import com.example.project.exception.AlreadyStartedException;
 
-public class ActiveNode extends Node implements Runnable {
+public abstract class ActiveNode extends Node implements Runnable {
     private Thread thread;
     private long interval = 1000;
 
-    ActiveNode() {
+    protected ActiveNode() {
         super();
-
     }
 
     ActiveNode(String name) {
@@ -20,11 +19,11 @@ public class ActiveNode extends Node implements Runnable {
         super(name, id);
     }
 
+    protected abstract void preprocess();
 
+    protected abstract void process();
 
-    void process() {
-
-    }
+    protected abstract void postprocess(); // 마무리에서 스레드 제거
 
     @Override
     public void run() {
@@ -35,24 +34,6 @@ public class ActiveNode extends Node implements Runnable {
         }
 
         postprocess();
-    }
-
-    void postprocess() { // 마무리에서 스레드 제거
-        thread = null;
-    }
-
-    void preprocess() {
-
-    }
-
-    @Override
-    public String getName() {
-        return thread.getName();
-    }
-
-    @Override
-    public void setName(String name) {
-        thread.setName(name);
     }
 
     public long getInterval() {
