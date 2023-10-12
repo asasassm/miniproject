@@ -30,7 +30,12 @@ public abstract class ActiveNode extends Node implements Runnable {
         preprocess();
 
         while (isAlive()) {
-            process();
+            try {
+                process();
+                Thread.sleep(interval);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
         }
 
         postprocess();
@@ -46,7 +51,6 @@ public abstract class ActiveNode extends Node implements Runnable {
 
     public void stop() {
         if (thread != null) {
-
             thread.interrupt();
         }
     }
