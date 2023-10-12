@@ -5,11 +5,19 @@ import com.example.project.wire.Wire;
 import com.example.project.exception.OutOfBoundsException;
 import com.example.project.message.Message;
 import com.example.project.wire.Wire;
-
+/**
+ * 안쓰는 class
+ */
 public abstract class InputOutputNode extends ActiveNode {
     Wire[] inputWires; // 생성된 포트
     Wire[] outputWires; // 들어 오길 기다리는 포트,
 
+    /**
+     *  안쓰는 method
+     * @param name 이름
+     * @param inCount
+     * @param outCount
+     */
     InputOutputNode(String name, int inCount, int outCount) {
         super(name);
         inputWires = new Wire[inCount];
