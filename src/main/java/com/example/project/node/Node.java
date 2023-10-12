@@ -1,13 +1,12 @@
 package com.example.project.node;
 
-import java.rmi.server.UID;
 import java.util.UUID;
 import lombok.extern.slf4j.Slf4j;
 import com.github.f4b6a3.uuid.UuidCreator;
 
 @Slf4j
 public abstract class Node {
-    static int count;
+    private static int count;
     UUID id;
     String name;
 
@@ -18,6 +17,10 @@ public abstract class Node {
         log.trace("create node : {} ", id);
     }
 
+    Node() {
+        this(UuidCreator.getTimeBased());
+    }
+
     Node(UUID id) {
         this(id.toString(), id);
     }
@@ -26,18 +29,18 @@ public abstract class Node {
         this(name, UuidCreator.getTimeBased());
     }
 
-    Node() {
-        this(UuidCreator.getTimeBased());
-    }
-
-
     public UUID getId() {
         return id;
     }
 
-    public abstract String getName();
+    public String getName() {
+        return name;
+    }
 
-    public abstract void setName(String name);
+    public void setName(String name) {
+        this.name = name;
+        log.trace("node name : {}", name);
+    }
 
     public static int getCount() {
         return count;
