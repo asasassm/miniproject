@@ -16,7 +16,7 @@ public abstract class InputOutNode extends ActiveNode {
         outputWires = new Wire[outCount];
     }
 
-    public InputOutNode(int inCount, int outCount) {
+    InputOutNode(int inCount, int outCount) {
         super();
         inputWires = new Wire[inCount];
         outputWires = new Wire[outCount];
@@ -29,21 +29,41 @@ public abstract class InputOutNode extends ActiveNode {
         outputWires[index] = wire;
     }
 
-    public int getInputWireCount() {
-        return Wires.length;
-    }
-
-    public Wire getInputWire(int index) {
-        if (index < 0 || peerWire.length <= index) {
+    public void connectInputWire(int index, Wire wire) {
+        if (index < 0 || inputWires.length <= index) {
             throw new OutOfBoundsException();
         }
-        return Wires[index];
+        inputWires[index] = wire;
+    }
+
+    public int getInputWireCount() {
+        return inputWires.length;
+    }
+
+    public int getOutputWireCount() {
+        return outputWires.length;
+    }
+
+
+
+    public Wire getInputWire(int index) {
+        if (index < 0 || inputWires.length <= index) {
+            throw new OutOfBoundsException();
+        }
+        return inputWires[index];
+    }
+
+    public Wire getOutputWire(int index) {
+        if (index < 0 || outputWires.length <= index) {
+            throw new OutOfBoundsException();
+        }
+        return outputWires[index];
     }
 
     public void output(Message message) {
-        for (Wire Wire : peerWire) {
+        for (Wire Wire : outputWires) {
             if (Wire != null) {
-                Wire.add(message);
+                Wire.put(message);
             }
         }
     }
