@@ -1,8 +1,10 @@
 package com.example.project.node;
 
 import com.example.project.wire.Wire;
+
 import com.example.project.exception.OutOfBoundsException;
 import com.example.project.message.Message;
+import com.example.project.wire.Wire;
 
 public abstract class InputOutNode extends ActiveNode {
     Wire[] inputWires; // 생성된 포트
@@ -42,6 +44,8 @@ public abstract class InputOutNode extends ActiveNode {
         return outputWires.length;
     }
 
+
+
     public Wire getInputWire(int index) {
         if (index < 0 || inputWires.length <= index) {
             throw new OutOfBoundsException();
@@ -63,4 +67,5 @@ public abstract class InputOutNode extends ActiveNode {
             }
         }
     }
+
 }
