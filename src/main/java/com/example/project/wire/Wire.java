@@ -8,4 +8,6 @@ public interface Wire {
     public boolean hasMessage();
 
     public Message get();
+
+    // git test
 }
