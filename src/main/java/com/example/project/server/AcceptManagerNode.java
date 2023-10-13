@@ -26,8 +26,6 @@ public class AcceptManagerNode extends InputOutputNode {
     protected void process() {
 
         if (isConnected()) {
-
-
             log.info("ACcept 성공");
             Message message = getInputWire(0).get(); // 소켓 연결
             if (message instanceof SocketMessage) { // 메세지가 소켓메세지 객체면
