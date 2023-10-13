@@ -14,4 +14,20 @@ public class SocketIn extends InputOutputNode {
 
     }
 
+    @Override
+    protected void postprocess() {
+
+    }
+
+    @Override
+    protected void preprocess() {
+
+    }
+
+    @Override
+    protected void process() {
+
+    }
+
+
 }
