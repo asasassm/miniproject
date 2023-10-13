@@ -4,8 +4,6 @@ import com.example.project.wire.Wire;
 
 import com.example.project.exception.OutOfBoundsException;
 import com.example.project.message.Message;
-import com.example.project.wire.Wire;
-
 
 public abstract class InputOutputNode extends ActiveNode {
     Wire[] inputWires; // 생성된 포트
@@ -66,5 +64,4 @@ public abstract class InputOutputNode extends ActiveNode {
             }
         }
     }
-
 }

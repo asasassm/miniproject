@@ -2,11 +2,9 @@ package com.example.project.server;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.function.BooleanSupplier;
 
 public class BlackList {
     private List<String> blackList;
-
 
     public BlackList() {
         blackList = new ArrayList<>();

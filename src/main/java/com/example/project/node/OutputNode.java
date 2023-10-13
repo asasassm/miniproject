@@ -8,7 +8,7 @@ import com.example.project.wire.Wire;
 public class OutputNode extends ActiveNode {
     Wire[] inputWires;
 
-    OutputNode(String name, int count) {
+    protected OutputNode(String name, int count) {
         super(name);
         if (count <= 0) {
             throw new InvalidArgumentException();
@@ -16,7 +16,7 @@ public class OutputNode extends ActiveNode {
         inputWires = new Wire[count];
     }
 
-    OutputNode(int count) {
+    protected OutputNode(int count) {
         super();
         if (count <= 0) {
             throw new InvalidArgumentException();

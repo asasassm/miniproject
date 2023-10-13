@@ -20,7 +20,7 @@ public class InputNode extends ActiveNode {
         outputWires = new Wire[count];
     }
 
-    InputNode(int count) {
+    protected InputNode(int count) {
         super();
 
         if (count <= 0) {
@@ -59,6 +59,5 @@ public class InputNode extends ActiveNode {
             }
         }
     }
-
 
 }
