@@ -108,9 +108,9 @@ public class AcceptManagerNode extends InputOutputNode {
 
 
                 log.debug("Accept Sokcet Info : {}", socket.toString());
-                if (blackList.contain(socket.getInetAddress().getHostAddress())) {
+                if (!blackList.contain(socket.getInetAddress().getHostAddress())) {
                     output(new SocketMessage(socket)); // 소켓 검사 후 output으로 넘겨줌
-                    // log.info(socket.getInetAddress().getHostAddress() + " 입장");
+                    log.info(socket.getInetAddress().getHostAddress() + " 입장");
                 } else {
                     try {
                         log.info(socket.getInetAddress().getHostAddress() + "는 입장불가");
@@ -127,6 +127,11 @@ public class AcceptManagerNode extends InputOutputNode {
     @Override
     protected void postprocess() {
 
+    }
+
+
+    public BlackList getBlackList() {
+        return blackList;
     }
 
 }

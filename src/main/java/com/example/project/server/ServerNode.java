@@ -59,6 +59,7 @@ public class ServerNode extends InputNode { // InputNode가 됨
         AcceptManagerNode acceptManagerNode = new AcceptManagerNode();
         Wire wire1 = new BufferedWire();
 
+        acceptManagerNode.getBlackList().addBlcakList("0:0:0:0:0:0:0:1");
         serverNode.connectOutputWire(0, wire1);
         acceptManagerNode.connectInputWire(0, wire1);
         serverNode.start();
