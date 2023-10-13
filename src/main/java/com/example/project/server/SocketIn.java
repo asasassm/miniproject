@@ -12,6 +12,9 @@ public class SocketIn extends InputOutputNode {
     Socket socket;
     BufferedReader bufferedReader;
 
+    // 내가 올릴때 -> 로컬develop에가서 내 로컬 feature를 머지 한다. - > 그 로컬 develop을 푸쉬
+    // 받을때 로컬 develop으로가서 풀 땡기고 내 로컬 feature로 가서 로컬 develop을 머지
+    // git홈피에서 바로 pull request
     protected SocketIn(int inCount, int outCount) {
         super(inCount, outCount);
 

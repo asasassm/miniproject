@@ -40,6 +40,8 @@ public class InputNode extends ActiveNode {
         outputWires[index] = wire;
     }
 
+
+
     public int getOutputWireCount() {
         return outputWires.length;
     }
@@ -50,6 +52,7 @@ public class InputNode extends ActiveNode {
         }
         return outputWires[index];
     }
+
 
     public void output(Message message) {
         log.trace("Message Out");
