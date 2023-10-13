@@ -5,6 +5,7 @@ import java.net.Socket;
 import com.example.project.message.Message;
 import com.example.project.message.SocketMessage;
 import com.example.project.node.InputOutputNode;
+import com.example.project.wire.Wire;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
@@ -18,6 +19,10 @@ public class AcceptManagerNode extends InputOutputNode {
 
     public boolean isConnected() { // 와이엉 연결확인 이다, 소켓 연결이 아니다
         return ((getInputWire(0) != null) && getInputWire(0).hasMessage());
+    }
+
+    public void addBlackList(String ip) {
+        blackList.addBlcakList(ip);
     }
 
     @Override
@@ -53,4 +58,8 @@ public class AcceptManagerNode extends InputOutputNode {
     public BlackList getBlackList() {
         return blackList;
     }
+
+    public void connectInputWire(Wire wire) {
+        this.connectInputWire(0, wire);
+    } // 바로 연결을 시켜줌 와이어 하나만 쓸거니까
 }

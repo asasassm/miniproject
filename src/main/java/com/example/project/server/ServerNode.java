@@ -46,14 +46,20 @@ public class ServerNode extends InputNode { // InputNode가 됨
         }
     }
 
+    public void connectOutWire(Wire wire) {
+        this.connectOutputWire(0, wire);
+    } // 바로 연결
+
+
+    // 인풋아웃풋 노드가 있고 와이어번호에따라 connect해주면 서로 연결
     public static void main(String[] args) {
         ServerNode serverNode = new ServerNode("test", 8888);
         AcceptManagerNode acceptManagerNode = new AcceptManagerNode();
         Wire wire1 = new BufferedWire();
 
-        acceptManagerNode.getBlackList().addBlcakList("0:0:0:0:0:0:0:1");
-        serverNode.connectOutputWire(0, wire1);
-        acceptManagerNode.connectInputWire(0, wire1);
+        acceptManagerNode.addBlackList("127.0.0.1");
+        serverNode.connectOutWire(wire1);
+        acceptManagerNode.connectInputWire(wire1);
         serverNode.start();
         acceptManagerNode.start();
     }
