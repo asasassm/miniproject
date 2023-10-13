@@ -6,17 +6,18 @@ import com.example.project.exception.OutOfBoundsException;
 import com.example.project.message.Message;
 import com.example.project.wire.Wire;
 
-public abstract class InputOutNode extends ActiveNode {
+
+public abstract class InputOutputNode extends ActiveNode {
     Wire[] inputWires; // 생성된 포트
     Wire[] outputWires; // 들어 오길 기다리는 포트,
 
-    InputOutNode(String name, int inCount, int outCount) {
+    protected InputOutputNode(String name, int inCount, int outCount) {
         super(name);
         inputWires = new Wire[inCount];
         outputWires = new Wire[outCount];
     }
 
-    InputOutNode(int inCount, int outCount) {
+    protected InputOutputNode(int inCount, int outCount) {
         super();
         inputWires = new Wire[inCount];
         outputWires = new Wire[outCount];
@@ -43,8 +44,6 @@ public abstract class InputOutNode extends ActiveNode {
     public int getOutputWireCount() {
         return outputWires.length;
     }
-
-
 
     public Wire getInputWire(int index) {
         if (index < 0 || inputWires.length <= index) {

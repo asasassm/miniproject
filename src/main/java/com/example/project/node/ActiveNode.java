@@ -3,56 +3,44 @@ package com.example.project.node;
 import java.util.UUID;
 import com.example.project.exception.AlreadyStartedException;
 
-public class ActiveNode extends Node implements Runnable {
+public abstract class ActiveNode extends Node implements Runnable {
     private Thread thread;
     private long interval = 1000;
 
-    ActiveNode() {
+    protected ActiveNode() {
         super();
-
     }
 
-    ActiveNode(String name) {
+    protected ActiveNode(String name) {
         super(name);
     }
 
-    ActiveNode(String name, UUID id) {
+    protected ActiveNode(String name, UUID id) {
         super(name, id);
     }
 
+    protected void preprocess() {}
 
+    protected void process() {}
 
-    void process() {
-
-    }
+    protected void postprocess() {
+        thread = null;
+    } // 마무리에서 스레드 제거
 
     @Override
     public void run() {
         preprocess();
 
         while (isAlive()) {
-            process();
+            try {
+                process();
+                Thread.sleep(interval);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
         }
 
         postprocess();
-    }
-
-    void postprocess() { // 마무리에서 스레드 제거
-        thread = null;
-    }
-
-    void preprocess() {
-
-    }
-
-    @Override
-    public String getName() {
-        return thread.getName();
-    }
-
-    @Override
-    public void setName(String name) {
-        thread.setName(name);
     }
 
     public long getInterval() {
@@ -65,7 +53,6 @@ public class ActiveNode extends Node implements Runnable {
 
     public void stop() {
         if (thread != null) {
-
             thread.interrupt();
         }
     }

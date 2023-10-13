@@ -1,8 +1,9 @@
 package com.example.project.node;
 
 import java.util.UUID;
-import lombok.extern.slf4j.Slf4j;
+
 import com.github.f4b6a3.uuid.UuidCreator;
+import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 public abstract class Node {
@@ -28,7 +29,6 @@ public abstract class Node {
     Node() {
         this(UuidCreator.getTimeBased());
     }
-
 
     public UUID getId() {
         return id;
