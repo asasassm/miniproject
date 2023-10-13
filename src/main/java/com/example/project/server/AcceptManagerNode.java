@@ -20,8 +20,6 @@ public class AcceptManagerNode extends InputOutputNode {
         return ((getInputWire(0) != null) && getInputWire(0).hasMessage());
     }
 
-
-
     @Override
     protected void process() {
 
