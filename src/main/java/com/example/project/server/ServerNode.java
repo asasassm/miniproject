@@ -20,6 +20,7 @@ public class ServerNode extends InputNode { // InputNode가 됨
         this.port = port;
     }
 
+    @Override
     protected void preprocess() {
         try {
             serverSocket = new ServerSocket(port);
@@ -28,6 +29,7 @@ public class ServerNode extends InputNode { // InputNode가 됨
         }
     }
 
+    @Override
     protected void process() {
         try {
             Socket socket = serverSocket.accept(); // 소켓이 연결될 때 까지 무한 대기
@@ -38,6 +40,7 @@ public class ServerNode extends InputNode { // InputNode가 됨
         }
     }
 
+    @Override
     protected void postprocess() {
         try {
             serverSocket.close();
@@ -49,7 +52,6 @@ public class ServerNode extends InputNode { // InputNode가 됨
     public void connectOutWire(Wire wire) {
         this.connectOutputWire(0, wire);
     } // 바로 연결
-
 
     // 인풋아웃풋 노드가 있고 와이어번호에따라 connect해주면 서로 연결
     public static void main(String[] args) {
