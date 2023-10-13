@@ -7,7 +7,7 @@ import com.example.project.message.Message;
 /**
  * Socket Wire로 바꿨음
  */
-public class BufferedWire implements Wire<Message> {
+public class BufferedWire implements Wire {
     Queue<Message> messageQueue;
 
     public BufferedWire() {

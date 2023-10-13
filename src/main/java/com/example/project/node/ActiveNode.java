@@ -11,19 +11,21 @@ public abstract class ActiveNode extends Node implements Runnable {
         super();
     }
 
-    ActiveNode(String name) {
+    protected ActiveNode(String name) {
         super(name);
     }
 
-    ActiveNode(String name, UUID id) {
+    protected ActiveNode(String name, UUID id) {
         super(name, id);
     }
 
-    protected abstract void preprocess();
+    protected void preprocess() {}
 
-    protected abstract void process();
+    protected void process() {}
 
-    protected abstract void postprocess(); // 마무리에서 스레드 제거
+    protected void postprocess() {
+        thread = null;
+    } // 마무리에서 스레드 제거
 
     @Override
     public void run() {
