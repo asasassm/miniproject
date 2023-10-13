@@ -4,6 +4,9 @@ import java.util.LinkedList;
 import java.util.Queue;
 import com.example.project.message.Message;
 
+/**
+ * Socket Wire로 바꿨음
+ */
 public class BufferedWire implements Wire<Message> {
     Queue<Message> messageQueue;
 
