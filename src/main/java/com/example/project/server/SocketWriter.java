@@ -13,9 +13,6 @@ import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 public class SocketWriter extends OutputNode {
-    private Socket socket;
-    private String message;
-
     protected SocketWriter(int count) {
         super(count);
     }
@@ -25,8 +22,8 @@ public class SocketWriter extends OutputNode {
         Message inSocketMessage = getInpuWire(0).get();
         if (inSocketMessage instanceof WrappingMessage) {
             WrappingMessage wrappingMessage = (WrappingMessage) inSocketMessage;
-            socket = wrappingMessage.getSocket();
-            message = wrappingMessage.getMessage();
+            Socket socket = wrappingMessage.getSocket();
+            String message = wrappingMessage.getMessage();
             if (socket != null && message != null) {
                 try {
                     BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream()));
