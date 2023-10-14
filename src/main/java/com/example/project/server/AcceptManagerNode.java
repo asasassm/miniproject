@@ -50,16 +50,7 @@ public class AcceptManagerNode extends InputOutputNode {
         }
     }
 
-    @Override
-    protected void postprocess() {
-
-    }
-
     public BlackList getBlackList() {
         return blackList;
     }
-
-    public void connectInputWire(Wire wire) {
-        this.connectInputWire(0, wire);
-    } // 바로 연결을 시켜줌 와이어 하나만 쓸거니까
 }

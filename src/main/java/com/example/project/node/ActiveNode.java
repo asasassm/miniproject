@@ -68,7 +68,4 @@ public abstract class ActiveNode extends Node implements Runnable {
     public boolean isAlive() {
         return (thread != null) && thread.isAlive();
     }
-
-
-
 }
